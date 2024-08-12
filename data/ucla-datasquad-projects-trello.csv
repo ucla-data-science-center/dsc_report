@@ -1,0 +1,236 @@
+Card ID,Card Name,department,ucla_affiliation,Card URL,Card Description,Labels,Members,Due Date,Attachment Count,Attachment Links,Checklist Item Total Count,Checklist Item Completed Count,Vote Count,Comment Count,Last Activity Date,List ID,List Name,Board ID,Board Name,Archived,Start Date,Due Complete,DSC Contact
+65ac0c414b7220aaf9633043,DSC/DataSquad combined jekyll website,DSC,Staff,https://trello.com/c/UBq8wUbX/207-dsc-datasquad-combined-jekyll-website,"Need a DSC/DataSquad website for:
+
+1. blogging about projects or how to use tools
+   1. can be either from DataSquad or DSC teams
+2. Documentation for resources like UCLA Dataverse
+3. Info on members, both past and present
+4. how to get help or meet with us
+
+We need to find a new Jekyll theme that will accomodate all those needs.
+
+We’ll need to eventually migrate content from DataSquad.
+
+Will be located: `ucla-data-science-center.github.io` and needs a repo named: ucla-data-science-center in [https://github.com/ucla-data-science-center](https://github.com/ucla-data-science-center ""smartCard-inline"")",,,,0,,0,0,0,0,2024-03-07T21:40:54.854Z,635ae312187ea10240442311,Future Projects/Ideas,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Tim
+664fb52d090530b2bf15e987,Google Scholar PDF reader research,DSC,Staff,https://trello.com/c/sMT5evnF/237-google-scholar-pdf-reader-research,"[Google recently released](https://scholar.googleblog.com/2024/03/supercharge-your-pdf-reading-follow.html ""‌"") a chrome plug in that generates an outline for research papers.
+
+The task would be to [install the plugin](https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkoodjbpjheillcadbppiidmhp?utm_medium=blog&utm_source=scholar.googleblog.com&utm_campaign=launch ""‌"") and investigate the tools they used to generate the plugin. An [extension decompiler](https://chromewebstore.google.com/detail/chrome-extension-source-v/jifpbeccnghkjeaalbbjmodiffmgedin?hl=en ""‌"") will allow a peek at the underlying code (albeit messy).
+
+I think this is using [pdf.js ](https://github.com/mozilla/pdf.js ""‌"")under the covers, this ticket would be to poke through the code, try to verify that and the functions it is using. The approach seems similar [to this example.](https://medium.com/@csofiamsousa/creating-a-table-of-contents-with-pdf-js-4a4316472fff ""‌"")
+
+A starting test would be to pick a random paper that is not too complex, generate outline using the google extension, and see if can replicate using local javascript and pdf.js.",LLM-related (green_light),,,0,,0,0,0,0,2024-05-29T18:57:39.895Z,611df19aae2e1401588dbc29,To Be Assigned/Started,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+6658fba342c1991fbf6e91f2,Sentiment analysis of Weibo posts pre/post COVID-19 outbreak,DSC,Graduate Student,https://trello.com/c/SFJB6AY1/238-sentiment-analysis-of-weibo-posts-pre-post-covid-19-outbreak,"Aiya Wang is a senior doing research analyzing sentiment of Weibo posts (has scraped 200k posts) before 70 days before and after the outbreak of COVID-19 in 2020. Notes can be found here: [https://docs.google.com/document/d/1vDcN-E4JUSjkc4op7Fm4vZTSlHety1GAp8YZNniUDsY/edit](https://docs.google.com/document/d/1vDcN-E4JUSjkc4op7Fm4vZTSlHety1GAp8YZNniUDsY/edit ""smartCard-inline"")
+
+Aiya has pulled in and done some cleaning of the data in R, though is open to learning Python to do the analysis.
+
+‌
+
+Suggested trying the following packages:
+
+- [Example: Chinese text analysis • quanteda](https://quanteda.io/articles/pkgdown/examples/chinese.html ""‌"") 
+  - [GitHub - quanteda/quanteda: An R package for the Quantitative Analysis of Textual Data](https://github.com/quanteda/quanteda ""‌"") 
+- [https://github.com/qinwf/jiebaR](https://github.com/qinwf/jiebaR ""smartCard-inline"")",,,,0,,0,0,0,0,2024-05-30T22:24:15.039Z,611df19aae2e1401588dbc29,To Be Assigned/Started,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+65e92c2a9ff3514984740f25,Dataverse dashboard,DSC,Staff,https://trello.com/c/84Uv8MnP/222-dataverse-dashboard,Dashboard for Dataverse statistics. I can pull all the information using the Dataverse API,,"jamiejamison6, timdennis23",,0,,0,0,0,0,2024-03-07T21:41:15.596Z,611df19aae2e1401588dbc29,To Be Assigned/Started,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+65ea36b8f09e77277b5d364a,game design on data literacy and LLM,Cotsen,Staff,https://trello.com/c/xgRwmz0f/224-game-design-on-data-literacy-and-llm,"The objective is to create a game that utilizes Large Language Models (LLMs) and technologies similar to ChatGPT to educate and assess students on data literacy skills.
+
+Work with Deidre Brin Digital Archaeology Lab and Data Publication Director [https://ucla.slack.com/team/W01AGU6FXFU](https://ucla.slack.com/team/W01AGU6FXFU ""‌"")
+
+email [dal@ioa.ucla.edu](mailto:dal@ioa.ucla.edu ""‌"")
+
+Update:
+Meeting with Deidre Tuesday April 30th.
+
+Notes for this project: [https://docs.google.com/document/d/1G1_8SBLeId6zi2t0tcnTa9R_l6yte-WGeSlkjeRgDis/edit](https://docs.google.com/document/d/1G1_8SBLeId6zi2t0tcnTa9R_l6yte-WGeSlkjeRgDis/edit ""smartCard-inline"")
+
+Google Folder for this project: [https://drive.google.com/drive/folders/1pnHa-0L7wLonUN1en7X5TlroHDcORBKi?usp=drive_link](https://drive.google.com/drive/folders/1pnHa-0L7wLonUN1en7X5TlroHDcORBKi?usp=drive_link ""smartCard-inline"")",LLM-related (green_light),"aimeexu2024, lawrence_tlee, lukashager7",,0,,0,0,0,2,2024-05-29T18:57:32.324Z,611df19aae2e1401588dbc29,To Be Assigned/Started,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Tim Dennis
+6619b576d97b5506e6dc4026,p-value calculation for patient symptoms,DSC,Graduate Student,https://trello.com/c/NSyT2TAY/228-p-value-calculation-for-patient-symptoms,"We have a request for helping with calculating p-values for disease related symptoms.
+
+Relevant links:
+
+Folder:
+
+[https://drive.google.com/drive/folders/1VOa8KvbNESNdOWLz8SJnY6jB46kcYQg2](https://drive.google.com/drive/folders/1VOa8KvbNESNdOWLz8SJnY6jB46kcYQg2 ""smartCard-inline"")
+
+Paper:
+[https://docs.google.com/document/d/12_iZoql11VigD8X7BSI1sAeecjfv7B7e/edit](https://docs.google.com/document/d/12_iZoql11VigD8X7BSI1sAeecjfv7B7e/edit ""smartCard-inline"")
+Relevant portion in paper: “Treatment-related adverse events in the study population”
+
+I pulled out the data and reformatted for easier reading into python/R
+[https://docs.google.com/spreadsheets/d/1R9zR1QDENmGsWM0OVe2eOZfRstBJ5RdWnSvXZgv5Ug4/edit#gid=0](https://docs.google.com/spreadsheets/d/1R9zR1QDENmGsWM0OVe2eOZfRstBJ5RdWnSvXZgv5Ug4/edit#gid=0 ""smartCard-inline"")
+
+I set up a notebook with the data
+[https://colab.research.google.com/drive/1aZPyz5XXlIIxMjKl7VaCuSjV_boUc2jz](https://colab.research.google.com/drive/1aZPyz5XXlIIxMjKl7VaCuSjV_boUc2jz ""smartCard-inline"")
+If you are testing, please make a copy of this notebook or add cells at bottom rather than changing since we don’t have source control for collab
+
+The request is to help compute adverse event/reaction p-values similar to page 3 in [https://www.lexjansen.com/pharmasug/2011/SP/PharmaSUG-2011-SP07.pdf](https://www.lexjansen.com/pharmasug/2011/SP/PharmaSUG-2011-SP07.pdf ""‌"")
+
+This example is in SAS, but I was hoping to convert to R or python","DS Project (green), statistics (yellow_light)",kristianallen3,,0,,0,0,0,1,2024-04-23T22:55:20.476Z,611df19aae2e1401588dbc29,To Be Assigned/Started,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+6622adc60b83c0ef3cd12dc9,JS layout in Qualtrics,DSC,Graduate Student,https://trello.com/c/DAvOQpq3/230-js-layout-in-qualtrics,"> Hi everyone, we got an email from a PhD candidate in Education looking for assistance using Javascript to create custom layouts in Qualtrics. Does anyone have ideas about whether to refer this person?",,timdennis23,,0,,0,0,0,4,2024-05-31T19:28:08.641Z,611df19aae2e1401588dbc29,To Be Assigned/Started,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+662ada04c285040ae022ad93,Web scraping for Orbis,DSC,Graduate Student,https://trello.com/c/pwkTL8O1/234-web-scraping-for-orbis,"We had a request to scrape data from Orbis, a financial database available through [anderson databases ](https://www.anderson.ucla.edu/rosenfeld-library/databases/business-databases-by-name#o ""‌"")(ctrl-f for Orbis, have to be on vpn or on campus to access)
+
+Try to modify this script to:
+
+1. actually work (would need to strip out login info, CaptialIQ stuff, etc…)
+2. Modify to scrape larger data sets (for example, say every company in West Virginia)
+
+[https://github.com/ekcm/finance-site-web-scraper](https://github.com/ekcm/finance-site-web-scraper ""smartCard-inline"")",,"kristianallen3, lawrence_tlee",,0,,0,0,0,4,2024-05-01T01:20:40.619Z,611df19aae2e1401588dbc29,To Be Assigned/Started,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+662ad8871b2b66b41f78aea1,Including URI Fragments in DataSquad Website URLs,DSC,Staff,https://trello.com/c/MRDSurRb/233-including-uri-fragments-in-datasquad-website-urls,"When I hyperlink portions on our [website](https://ucla-datasquad.github.io/ ""‌""), I notice all tabs on our website ([About](https://ucla-datasquad.github.io/ ""‌""), [Services](https://ucla-datasquad.github.io/ ""‌""), [Contact](https://ucla-datasquad.github.io/ ""‌""), [Blog](https://ucla-datasquad.github.io/ ""‌""), etc) have the same hyperlink. I want to look into including [Uniform Resource Identifiers](https://www.google.com/search?q=uri+meaning&oq=uri&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7Mg8IARBFGDkYgwEYsQMYgAQyEAgCEC4YgwEYsQMYgAQYigUyDQgDEAAYgwEYsQMYgAQyCggEEAAYsQMYgAQyBggFEEUYPDIGCAYQRRg9MgYIBxBFGDzSAQgyMzYyajBqN6gCALACAA&sourceid=chrome&ie=UTF-8 ""‌"") (URIs), even though all our links technically go to the same name, similar to the [UC Love Data Week website](https://uc-love-data-week.github.io/ ""‌"") that utilizes the same website template as us.",,aimeexu2024,,0,,0,0,0,0,2024-04-25T23:41:30.688Z,611df19aae2e1401588dbc29,To Be Assigned/Started,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+6633dd5f6e4f71525f151f76,extracting tables from pdfs,DSC,Graduate Student,https://trello.com/c/acSyzt2H/235-extracting-tables-from-pdfs,"Goal: convert tables in PDFs to CSVs. See the example below. There are hundreds of these PDFs, so processing them using a script would be ideal.
+
+Things I’ve tried:
+
+- [Tabula](https://tabula-py.readthedocs.io/en/latest/ ""‌""): doesn’t really work well because the tables is not in the most traditional table format ([Google Colab notebook](https://colab.research.google.com/drive/1SBmVJ5J1zpj88dXfi-DeXaM9ZFVD_1ea?usp=sharing ""‌""))
+- [Adobe](https://www.adobe.com/acrobat/online/pdf-to-excel.html ""‌""): similar reuslt as tabula",LLM-related (green_light),,,3,"https://trello.com/1/cards/6633dd5f6e4f71525f151f76/attachments/6633dd7afc9380bbc38baa47/download/coal_mine_census.pdf, https://trello.com/1/cards/6633dd5f6e4f71525f151f76/attachments/6633e2c3ba026919744e8647/download/Screenshot_2024-05-02_at_12.00.13_PM.png, https://trello.com/1/cards/6633dd5f6e4f71525f151f76/attachments/6633e2de0ab43e274d55f7f3/download/Screenshot_2024-05-02_at_12.00.43_PM.png",0,0,0,1,2024-05-29T18:55:48.120Z,611df19aae2e1401588dbc2a,In-Progress Projects,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Zhiyuan Yao
+664f6841f8d80eb42c026625,Deaths in Custody data cleaning,Carceral Ecologies,Faculty,https://trello.com/c/FwWDsI2a/236-deaths-in-custody-data-cleaning,,High Priority (red),"lawrence_tlee, timdennis23",,0,,0,0,0,2,2024-05-29T21:49:18.575Z,611df19aae2e1401588dbc2a,In-Progress Projects,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+65e8d3ab2b479eebc7506db9,Bert sentiment on transcriptions,DSC,Staff,https://trello.com/c/zTITHTpw/220-bert-sentiment-on-transcriptions,"Meeting notes: [https://docs.google.com/document/d/1CyUiP8oZV1kQWpq1AYLwJouL62xeaLm7ibRybfJiwtA/edit](https://docs.google.com/document/d/1CyUiP8oZV1kQWpq1AYLwJouL62xeaLm7ibRybfJiwtA/edit ""smartCard-inline"")
+
+Using transcripts of interviews, wants to use Bert to find sentiments in text.
+
+Needs annotated dataset to work from.",LLM-related (green_light),"aimeexu2024, lukashager7",,0,,0,0,0,1,2024-05-29T18:58:18.413Z,611df19aae2e1401588dbc2a,In-Progress Projects,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+65ea1b4b3e8f96713cf61020,Convert lesson to Carpentries Workbench,DSC,Staff,https://trello.com/c/CAOy92Su/223-convert-lesson-to-carpentries-workbench,"This isn’t part of the IMLS grant.
+
+We need to convert [https://curating4reproducibility.org/cure-carpentry-01-intro/index.html](https://curating4reproducibility.org/cure-carpentry-01-intro/index.html ""smartCard-inline"")  to the workbench. Use [https://github.com/carpentries/lesson-transition](https://github.com/carpentries/lesson-transition ""smartCard-inline"")
+
+There are 3 different lessons in the Intro to Data Cur for Repro:
+
+1. [https://github.com/curating4reproducibility/cure-carpentry-01-intro/tree/gh-pages](https://github.com/curating4reproducibility/cure-carpentry-01-intro/tree/gh-pages ""smartCard-inline"")
+2. [https://github.com/curating4reproducibility/cure-carpentry-02-workflows/tree/gh-pages](https://github.com/curating4reproducibility/cure-carpentry-02-workflows/tree/gh-pages ""smartCard-inline"")
+3. [https://github.com/curating4reproducibility/cure-carpentry-03-assessing/tree/gh-pages](https://github.com/curating4reproducibility/cure-carpentry-03-assessing/tree/gh-pages ""smartCard-inline"")
+4. [https://github.com/curating4reproducibility/cure-carpentry-04-packaging/tree/gh-pages](https://github.com/curating4reproducibility/cure-carpentry-04-packaging/tree/gh-pages ""smartCard-inline"")
+
+Start with the first one. Fork into dsc org and do the transition. Then we can meet.",,"lawrence_tlee, timdennis23",,0,,0,0,0,0,2024-03-07T19:59:30.627Z,611df19aae2e1401588dbc2a,In-Progress Projects,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+64dffbb5664b43ff9827d6d2,Potree,DSC,Staff,https://trello.com/c/T0rcU5fh/170-potree,Potree server,"aws (red), potree (red_dark)","biancabadajos, dougdaniels7, jamiejamison6, timdennis23",,2,"https://docs.google.com/document/d/1MeexF3I8yKw4v6nDz2FveaY5lkC70h7CyMna4DzGAGQ/edit?usp=drive_web, https://docs.google.com/document/d/1r5BLItNuVKw875Oy16FxZHJ_u_eJO6u2BX2fQdA-XYM/edit?usp=drive_web",0,0,0,6,2024-02-29T21:43:21.516Z,611df19aae2e1401588dbc2a,In-Progress Projects,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Doug Daniels
+635952d74a8e3f011ec386ac,Dashboard All Library Data,DSC,Staff,https://trello.com/c/TJdK8WU7/97-dashboard-all-library-data,"Dana Peterman & Sharon Shafer are working on an analytics project for the library using the Tableau Server site we've have. This project is to meet and help them with any viz/tableau questions they have on their project and then thru this experience, write up some documentation about using Tableau Server for the library.
+
+For this specific project they need to share their Vizzes with library administration that contains sensitive info, so need to know how Tableau Server can be configured to enable this and how they can distribute the project to sponsors who won't have the full Tableau license.","DS Project (green), Low Priority (blue)","emilygong_zhuying, hyerinlee9, lorhu091, timdennis23",,6,"https://trello.com/1/cards/635952d74a8e3f011ec386ac/attachments/654d27ebd29f21c296b3737c/download/image.png, https://docs.google.com/document/d/18WJsK1tNHes6-c_aAMCCEl1Dq9bxBA4DMduzS-Rl_TA/edit?usp=sharing, https://trello.com/1/cards/635952d74a8e3f011ec386ac/attachments/65a9c17018147f82588f49af/download/Screen_Shot_2024-01-18_at_4.25.16_PM.png, https://trello.com/1/cards/635952d74a8e3f011ec386ac/attachments/65af4ebd79f33c2f6cdbc3f9/download/image.png, https://github.com/ucla-data-science-center/data-extraction, https://docs.google.com/spreadsheets/d/1AjeKACb8R78m3qoZaZxI_Fooe95rP1yJLu4vkk2o-lE/edit?usp=sharing",12,10,0,39,2024-04-22T21:02:33.830Z,611df19aae2e1401588dbc2a,In-Progress Projects,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Tim
+65ea550d94b0ad2f361100ce,Erin Mauffray Linguistics Experiment,Linguistics,Graduate Student,https://trello.com/c/H6VrrHUQ/225-erin-mauffray-linguistics-experiment,"Erin Mauffray, 5th year PHD student, is working on her dissertation and needs help analyzing her results. She is using glmer in R.
+
+**Goal:** Include continuous predictor(s?) in mixed effects logistic regression.
+
+- Does language dominance (BLP score) affect the test group’s accuracy?
+- Does lexical proficiency (Lex) “ “ “ “ “?
+- Does reading hours (ReadSpan) “ “ “ “ “?
+
+‌
+
+**Experiment:** Acceptability judgment task where participants rate different sentences as acceptable (yes) or not (no). Two groups: native speaker controls (_n_ = 30) and heritage speaker experimental group (_n_ = 30). Roughly 32 target responses/participant (some skips). 1,853 test item responses across groups, structures, grammaticality.",,,,1,https://drive.google.com/drive/folders/1F662vm00z6Fem4GoyMaLPjAbx48k3M0t,0,0,0,0,2024-03-08T00:07:45.259Z,611df19aae2e1401588dbc2a,In-Progress Projects,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+65e92b7fd6ba566d377710fc,forest management database,IoES,Graduate Student,https://trello.com/c/Y5VJBoWU/221-forest-management-database,"Piecing together a forest management database that wasn’t backed up. Project will mostly be going through existing code to find data source or sources.
+
+‌
+
+This one will take some explaining.",,"hyerinlee9, jamiejamison6, lukashager7",,1,https://docs.google.com/document/d/13h-5JnFaoUDEmI6pnTrbFnAphmW873i5oY8MMKqs1v8/edit?usp=drive_web,0,0,0,2,2024-05-16T22:23:55.393Z,615e129992ba447b4c60d84c,Waiting/On Hold,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+63d962062aba478e5ffc0f60,Data vis for Alma Analytics,DSC,Staff,https://trello.com/c/lfNX2TWN/128-data-vis-for-alma-analytics,"Let's get this going with your Data Squad so they can get cool jobs. --SS 
+
+________________________________
+From: Shafer, Sharon <sshafer@library.ucla.edu>
+Sent: Tuesday, January 31, 2023 9:04 AM
+To: Grappone, Todd <grappone@library.ucla.edu>; Peterman, Dana <dpeterma@library.ucla.edu> Subject: Re: Data vis for Alma Analytics
+
+Very cool. Dana & I happen to be meeting with Tim this morning so we can probably get this started. --SS 
+
+________________________________
+From: Grappone, Todd <grappone@library.ucla.edu>
+Sent: Tuesday, January 31, 2023 8:37 AM
+To: Shafer, Sharon <sshafer@library.ucla.edu>; Peterman, Dana <dpeterma@library.ucla.edu> Subject: FW: Data vis for Alma Analytics
+
+FYI
+
+From: Steel, Virginia <vsteel@library.ucla.edu>
+Date: Monday, January 30, 2023 at 9:10 AM
+To: Grappone, Todd <grappone@library.ucla.edu>
+Subject: Data vis for Alma Analytics
+
+Hi Todd,
+
+I attended the Print Archives Network Forum on Friday and a brief session this morning, and one of the topics that was discussed was an app called StackR that takes data from Alma Analytics and gives some nice visualizations.  In case you’re interested, here’s a link to a presentation that was given, just fyi.  Ginnuy 
+
+https://docs.google.com/presentation/d/1xVj77tkK8gQvsg8nPgRgJgyDNXxn7FwkmqXfbxTvILc/edit#slide=id.g47bc02e253_2_45","DS Project (green), DataSquad (blue), Medium Priority (orange)","lukashager7, timdennis23",,1,https://docs.google.com/document/d/1T4CaVkXSWdRLE3oDtxm8BFGtkTM2BrJ-GOCdeA8gmno/edit?usp=drivesdk,6,2,0,14,2024-05-23T16:02:22.736Z,615e129992ba447b4c60d84c,Waiting/On Hold,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Tim
+655286eb4807e97e48d36ef3,R code refactorization article,Carceral Ecologies,Graduate Student,https://trello.com/c/lZnzNoD3/195-r-code-refactorization-article,"Thank you for the amazing work you did for R code refactorization. After making sure the code runs on researcher’s end, please start compiling and organizing your notes for our article writing. The article should include
+
+1. Researcher’s problem statement
+2. Our solution
+3. Future applications
+4. and maybe some other sections
+
+Will try to finish this by the end-of-the-year - Aimee",Outreach (purple),"aimeexu2024, lawrence_tlee, lorhu091",,0,,0,0,0,7,2024-05-23T22:25:11.601Z,615e129992ba447b4c60d84c,Waiting/On Hold,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Tim
+614cfbd4931ff7436f236b4e,Roii Ball - Sabean Historical Data,History,Faculty,https://trello.com/c/wv1AFDqv/3-roii-ball-sabean-historical-data,"Give Roii all the data before the end of the quarter
+Baptism data first file
+~80 files of baptism records
+~4 hours + before summer hours
+Goal is to publish data into dataverse
+
+4 different file types, given by Roii Ball about German village, Professor Sabean 
+NHB - baptism
+NHF - family
+NHM - marriage
+NHB - burials/funerals
+Located in drive - Sabean Historical file within Dataquad Ongoing projects folder
+
+[Google Drive Link](https://drive.google.com/drive/folders/13U9157h0eO94bSmCgAsu75YX1CnAag3Q)","DS Project (green), High Priority (red)","jamiejamison6, lukashager7",,2,"https://trello.com/c/epopJ4o0/62-sabean-roi-ball, https://docs.google.com/document/d/1QLpujhiz_HT9fwSUjyU7jGY2IrVXAzKXPMnobeOxbj4/edit?usp=drive_web",4,4,0,22,2024-03-05T18:57:18.190Z,615e129992ba447b4c60d84c,Waiting/On Hold,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Jamie
+655288c7e8e64df14f8421d0,Content analysis article,DSC,Staff,https://trello.com/c/OfZ370nT/196-content-analysis-article,"Thank you for the amazing work you did!!
+
+Please start compiling and organizing your notes @hyerinlee9 @lawrence_tlee for our article writing. The article should include
+
+1. What problem we are trying to solve
+2. Your attempts
+3. Our final solution
+4. Future applications
+5. and maybe some other sections","Low Priority (blue), Outreach (purple)","aimeexu2024, hyerinlee9, lawrence_tlee, timdennis23",,0,,0,0,0,3,2024-03-05T18:57:18.193Z,615e129992ba447b4c60d84c,Waiting/On Hold,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Tim
+65244f246222c6aaf20a65ea,content analysis of consulting meeting notes and trello,DSC,Staff,https://trello.com/c/2sw4kp6y/184-content-analysis-of-consulting-meeting-notes-and-trello,"Analyze past year’s [consulting notes](https://docs.google.com/document/d/1WK6Pa3txWc_RjzftWrgjeHfrqx-VO91lGedDnEdjzV0/edit?usp=sharing ""‌"") with ChatGPT.
+
+[https://colab.research.google.com/drive/1B8WFh5dRp_N4bed6p1c8Jt5bDQ1ufTax?usp=sharing](https://colab.research.google.com/drive/1B8WFh5dRp_N4bed6p1c8Jt5bDQ1ufTax?usp=sharing ""smartCard-inline"")","DS Project (green), DataSquad (blue)","emilygong_zhuying, hyerinlee9, lawrence_tlee, lorhu091",,9,"https://trello.com/1/cards/65244f246222c6aaf20a65ea/attachments/652db1e7e4ab0d5a811489f3/download/sample-progress.csv, https://colab.research.google.com/drive/1B8WFh5dRp_N4bed6p1c8Jt5bDQ1ufTax?usp=sharing, https://trello.com/1/cards/65244f246222c6aaf20a65ea/attachments/6531c1171efd3b6ebb7806f1/download/consulting_notes.txt, https://trello.com/1/cards/65244f246222c6aaf20a65ea/attachments/6531fa8e9f0498d624dcdf08/download/.env, https://trello.com/1/cards/65244f246222c6aaf20a65ea/attachments/6536fbd41857384cb2b6aef3/download/Draft_2.txt, https://trello.com/1/cards/65244f246222c6aaf20a65ea/attachments/6537010dfed4cdbc134775a0/download/22-23_Meeting_Analysis.xlsx, https://trello.com/1/cards/65244f246222c6aaf20a65ea/attachments/653802c68de5730f697763e5/download/output.txt, https://drive.google.com/drive/folders/1yMac6yuvAtFBYEnQ2AtkXq-fE76inHST, https://trello.com/1/cards/65244f246222c6aaf20a65ea/attachments/659d8e9fe1d71d85d5e7f4f0/download/Meeting_Notes.xlsx",0,0,0,25,2024-02-29T21:45:27.887Z,615e129992ba447b4c60d84c,Waiting/On Hold,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+65367e8dadcc8f88f952fdbd,Create a flyer to annouce the implementation of SSO log in for ArcGIS Online and ArcGIS Pro.,DSC,Staff,https://trello.com/c/5eHeNnn4/190-create-a-flyer-to-annouce-the-implementation-of-sso-log-in-for-arcgis-online-and-arcgis-pro,"[https://docs.google.com/document/d/1967a0VLyXfchE63iwU8S7mG5Ll_lCFnUYjZIYGvMfyA/edit?usp=sharing](https://docs.google.com/document/d/1967a0VLyXfchE63iwU8S7mG5Ll_lCFnUYjZIYGvMfyA/edit?usp=sharing ""‌"")
+
+‌
+
+[https://uclalibrary.atlassian.net/servicedesk/customer/portal/17/LC-395](https://uclalibrary.atlassian.net/servicedesk/customer/portal/17/LC-395 ""smartCard-inline"")",,zhiyuanyao4,,1,https://trello.com/1/cards/65367e8dadcc8f88f952fdbd/attachments/654d1430771fc4251bb283c5/download/ArcGIS_SSO_Announce_Promotion.jpg,0,0,0,4,2024-04-23T21:49:21.970Z,615e129992ba447b4c60d84c,Waiting/On Hold,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+64f8cc07bde97ee011485e14,Write gpt prompt to generate a DMP,DSC,Staff,https://trello.com/c/KM6UhuK2/173-write-gpt-prompt-to-generate-a-dmp,"Description goes here
+
+1. Write gpt prompt to generate a DMP (Hyerin and Lawrence, Tim)
+   1. Not sure the feasibility of this task
+   2. Data Management Plan: a very formulated document
+   3. May need to borrow API key - meeting next next week
+   4. [hyerynn0521@g.ucla.edu](mailto:hyerynn0521@g.ucla.edu ""‌"") and [lawrencetlee@g.ucla.edu](mailto:lawrencetlee@g.ucla.edu ""‌"") log into [https://dmptool.org/](https://dmptool.org/ ""smartCard-inline"")  and create a test DMP from NIH (you can check off a button that says it is a test dmp - you can then export it to get a sense of the elements",,"hyerinlee9, lawrence_tlee, timdennis23, toddgrappone",,1,https://github.com/ucla-data-science-center/DMP-generator.git,4,3,0,7,2024-02-29T21:45:27.886Z,615e129992ba447b4c60d84c,Waiting/On Hold,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Tim
+660cd22b1908bcc3c656b1a9,https://uclalibrary.atlassian.net/wiki/spaces/LITKB/pages/39138216/Access+a+CLICC+Virtual+Desktop,DSC,Staff,https://trello.com/c/6hIG0s8k/226-https-uclalibraryatlassiannet-wiki-spaces-litkb-pages-39138216-accessacliccvirtualdesktop,,,,,0,,0,0,0,0,2024-04-03T03:51:07.918Z,615e129992ba447b4c60d84c,Waiting/On Hold,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+646e96ffba62e7f95ff5dde7,Updating LibInsights Script to Reflect Calendly Field Changes,DSC,Staff,https://trello.com/c/XgoKUeAH/159-updating-libinsights-script-to-reflect-calendly-field-changes,"For this project, update the script that’s here: [https://github.com/ucla-data-science-center/dsc-calendly-to-libinsights](https://github.com/ucla-data-science-center/dsc-calendly-to-libinsights ""smartCard-inline"")
+
+To match the libinsights mappings found here: [https://docs.google.com/spreadsheets/d/1wcFBpOPd-2bM6W3Al_cmu57sILWLwfzoVH0Xo-MF-8o/edit#gid=0](https://docs.google.com/spreadsheets/d/1wcFBpOPd-2bM6W3Al_cmu57sILWLwfzoVH0Xo-MF-8o/edit#gid=0 ""smartCard-inline"")
+
+Since the script was working we adopted ‘administered event types’ for datasquad members, this has changed the shape of the data when exported and broke the script. Fix the script and we can then reorient all event types in calendly to match what the script expects.",DS Project (green),"emilygong_zhuying, timdennis23",,0,,4,1,0,8,2024-06-03T01:03:03.345Z,62fe87499526f765db371487,Done!,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Tim
+65bbde4fde76ecaf5f380298,ORCID visualization,DSC,Staff,https://trello.com/c/5AB7p7f0/213-orcid-visualization,"**Objective**: create data visualizations and Tableau dashboard based on ORCID users at UCLA
+**Resources**:
+
+- ORCID’s [Data Visualization page](https://orcidus.lyrasis.org/data-visualization/ ""‌"")
+  - An R script that searches for ORCID iDs for researchers at your organization, retrieves publication data (containing Crossref DOIs) from those researchers’ ORCID records, and then queries the Crossref API to get co-author information for those publications. The resulting dataset can be loaded into:
+  - A Tableau Public dashboard template that shows a visual map of collaborators, as well as a few other views to explore the data
+- Step by step instructions for running the script and using the dashboard can be found on Github: [https://github.com/lyrasis/ORCID-Data-Visualization](https://github.com/lyrasis/ORCID-Data-Visualization ""‌"").",DS Project (green),hyerinlee9,,2,"https://trello.com/1/cards/65bbde4fde76ecaf5f380298/attachments/65d654e4cd4abafeadd9b9ad/download/orcid-data.csv, https://trello.com/1/cards/65bbde4fde76ecaf5f380298/attachments/65d6550509d8cede675ee2b3/download/Rorcid_Crossref_Authors.R",0,0,0,8,2024-05-29T18:56:49.918Z,62fe87499526f765db371487,Done!,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+65b2d62b720d92d5dff79a96,Graduation Thesis Latex,DSC,Graduate Student,https://trello.com/c/CohKRz1X/210-graduation-thesis-latex,,,"emilygong_zhuying, lorhu091, timdennis23",,0,,0,0,0,6,2024-05-29T18:56:45.721Z,62fe87499526f765db371487,Done!,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+65a9a6a1653a1d131cb431f7,UC Love Data Week Promotion - Feb 12-16th,DSC,Staff,https://trello.com/c/UxRIkDdx/204-uc-love-data-week-promotion-feb-12-16th,"[https://uc-love-data-week.github.io/](https://uc-love-data-week.github.io/ ""smartCard-inline"")
+
+- UC LDW [https://drive.google.com/drive/u/0/folders/1THaftmpgfZDPdb72nUpofgfJfO0QEkEO](https://drive.google.com/drive/u/0/folders/1THaftmpgfZDPdb72nUpofgfJfO0QEkEO ""smartCard-inline"") materials",,"aimeexu2024, dougdaniels7, emilygong_zhuying, leighphan",,0,,3,3,0,5,2024-05-29T18:56:24.700Z,62fe87499526f765db371487,Done!,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,Leigh
+66295fae94bdba3bdf10f3f0,MMOCR exploration,DSC,Graduate Student,https://trello.com/c/PB4IU2ul/232-mmocr-exploration,"First step, install tutorial from: [https://github.com/open-mmlab/mmocr/tree/main/demo](https://github.com/open-mmlab/mmocr/tree/main/demo ""smartCard-inline"")
+
+tutorial.ipynb
+
+The imports are kind of glitchy and we do _not_ want to compile on import (the “building wheel” log is a note that is compiling, we want to just download the binary).
+
+Confirm able to run tutorial, as is.
+
+Next step:
+
+Document what are value arguments for
+
+`infer = MMOCRInferencer(det='dbnetpp', rec='aster')`
+
+det and rec values – Text Detection and Text Recognition models.
+
+I _think_ they are a combination of values (but in lowercase) from the MMOCR modelzoo page, but would like to verify possible values
+
+[https://mmocr.readthedocs.io/en/dev-1.x/modelzoo.html](https://mmocr.readthedocs.io/en/dev-1.x/modelzoo.html ""smartCard-inline"")
+
+The goal is to be able to run the whole notebook, then run:
+
+`pip freeze > requirements.txt`
+
+And attach this file here, we’d like to pin versions which take the _least_ time to load these libraries. It takes a long time to build the wheel/binary files",,"kristianallen3, lawrence_tlee, lukashager7",,0,,0,0,0,2,2024-05-23T21:29:26.900Z,62fe87499526f765db371487,Done!,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,
+65cd3423842181fbe567004a,Social Media Scraping,DSC,Graduate Student,https://trello.com/c/NPT7HRN2/216-social-media-scraping,"scraping data from twitter, weibo and tiktok with keywords",,"jamiejamison6, lawrence_tlee",,2,"https://docs.google.com/document/d/1hf-8wtpLoOpymbT9havPuLLHK9CWeOjfB8m-16cF1tU/edit?usp=drive_web, https://github.com/ucla-data-science-center/twitter-scraper/tree/xinyue-video-comment-scraper",0,0,0,0,2024-05-21T22:22:34.895Z,62fe87499526f765db371487,Done!,611df19aae2e1401588dbc27,UCLA DataSquad Projects,FALSE,,FALSE,

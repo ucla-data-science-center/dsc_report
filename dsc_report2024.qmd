@@ -1,0 +1,468 @@
+---
+title: 'DSC Report: 2024'
+author: "Tim Dennis"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 3
+  word_document:
+    toc: true
+    toc_depth: '3'
+  html_document:
+    toc: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+library(googledrive)
+library(tidyverse)
+library(scales)
+options(stringsAsFactors = F)
+library(readr)
+library(RColorBrewer)
+library(viridis)
+library(kableExtra)
+library(tidyr)
+library(htmlTable)
+library(stringr)
+library(janitor)
+library(lubridate)
+library(calecopal)
+library(tidytext) # for NLP
+library(wordcloud) # to render wordclouds
+library(DT) # for dynamic tables
+library(tidytext)
+library(tm)
+library(topicmodels)
+# Load necessary libraries
+library(dplyr)
+library(ggplot2)
+library(forcats)
+# Load the extrafont package
+library(extrafont)
+library(showtext)
+#font_import()
+loadfonts(device = "pdf")
+# Use showtext to handle fonts
+showtext_auto()
+
+# Define the custom theme
+custom_theme <- theme_minimal() +
+  theme(
+    text = element_text(family = "Arial", color = "#333333"),
+    axis.title = element_text(size = 14, face = "bold"),
+    axis.text = element_text(size = 12),
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14, hjust = 0.5),
+    plot.caption = element_text(size = 10, face = "italic", hjust = 1),
+    panel.grid.major = element_blank(),  # Remove major grid lines
+    panel.grid.minor = element_blank(),  # Remove minor grid lines
+    panel.background = element_rect(fill = "#FFFFFF", color = NA),
+    plot.background = element_rect(fill = "#FFFFFF", color = NA)
+  )
+
+# Set the custom theme as the default theme
+theme_set(custom_theme)
+```
+
+```{r read-data, include=FALSE, message=FALSE}
+# Source the R script
+#source("src/data_cleaning.R")
+source("src/data_clean2.R")
+
+# Load the cleaned and merged data
+dsc_consult <- readRDS("data/dsc_consult_merged.rds")
+# Load the standardized data
+load("data/standardized_data.rda")
+load("data/ucla_workshops.rda")
+dataverse <- read_csv('data/datasets_files_published_monthly.csv')
+```
+
+## Events & Workshops
+
+The DSC puts on events for the UCLA community and for the larger UC system in collaboration with other campuses. We manage the [UCLA Carpentries program](https://www.library.ucla.edu/about/programs/the-carpentries/) and provide a community for over 15 instructors on campus. We have also catalyzed a UC-wide Carpentries community and, over the pandemic, developed collaborative programming and workshop events. The success of this model has led to collaborative work in the development of [UC Love Data Week](https://uc-love-data-week.github.io/) in 2021 and subsequent years. In a similar vein, [UC GIS Week](https://uc-gis-ucop.hub.arcgis.com/pages/uc-gis-week-2023) was started in 2020 by GIS professionals in the UC system. We think these UC collaborative educational events will be a permanent fixture even as we offer more traditional local instruction.
+
+Our workshops typically address skills gaps in data science and foundational coding for researchers, staff, and librarians. We also contribute to curricula and train-the-trainer best practices through a global network.
+
+To get a sense of the growth of events organized, taught & designed by DSC instructors, let us look at attendance over time:
+
+### Attendance over time
+
+```{r workshops_year, echo=FALSE}
+#remove Na
+dsc_workshops %>% 
+  count(Year = year(date), name = "Number") %>%
+  drop_na() %>% 
+  ggplot(aes(reorder(Year, -Year), Number)) + geom_col(fill = "#2774AE") +
+    coord_flip() + 
+    scale_fill_manual(values=cal_palette("kelp1")) +
+    labs(x= "Year", y="Attendance", title="DSC Event Attendance by Year") +
+    theme(axis.text.x = element_text(angle = 45, size = 10, hjust = 1))  +
+    #geom_text (aes(label=Number), hjust= -0.12) +
+    geom_text(aes(label=Number), color = "white", hjust = 1.2) 
+```
+
+### Departments, Schools & Units
+
+```{r number-depts, echo=FALSE}
+num_depts_wkshp <- ucla_workshops %>% drop_na(standardized_department) %>% filter(institution == "UCLA") %>% distinct(standardized_department)  %>% nrow()
+num_depts_wkshp_2023 <- ucla_workshops %>%  filter(date >= "2023-01-01" & date <= "2023-12-31") %>% drop_na(standardized_department) %>% filter(institution == "UCLA") %>% distinct(standardized_department) %>% nrow()
+```
+
+Since 2017, our workshops have been attended by **`r num_depts_wkshp`** different departments, schools, centers or units from UCLA.
+
+We can look at the top departments who attend our workshops:
+
+```{r departmens_attendance, echo=FALSE}
+top_departments <- ucla_workshops %>%
+  filter(!is.na(standardized_department) & standardized_department != "NULL" & standardized_department != "" & standardized_department != "NA") %>%  
+  count(standardized_department, sort = TRUE, name = "Attendance") %>%
+  head(15)
+
+# Plotting
+ggplot(top_departments, aes(x = reorder(standardized_department, -Attendance), y = Attendance)) +
+  geom_col(fill = "#2774AE") +
+  coord_flip() + 
+  labs(x = "Department", y = "Attendance", 
+       title = "Top Departments by Attendance", 
+       subtitle = "2017-2024") +
+  theme(axis.text.x = element_text(angle = 45, size = 10, hjust = 1)) +
+  geom_text(aes(label = Attendance), color = "white", hjust = 1.2)
+```
+
+### Affiliation of Attendee: 2017-24
+
+A look at the affiliation of learners who come to our workshops.
+
+```{r attendee_status, echo=FALSE}
+dsc_workshops %>%
+  # filter(date >= "2020-07-01" & date <= "2021-06-30") %>%
+  count(status, sort = TRUE, name = "Attendance") %>%
+  drop_na(status) %>%
+  head(5) %>%
+  mutate(Percentage = Attendance / sum(Attendance) * 100) %>%
+  ggplot(aes(reorder(status, -Attendance), Attendance)) +
+    geom_col(fill = "#2774AE") +
+    coord_flip() +
+    scale_fill_manual(values = cal_palette("kelp1")) +
+    labs(x = "Status", y = "Attendance", title = "Attendance by Status", subtitle = "2017-2022") +
+    theme(axis.text.x = element_text(angle = 45, size = 10, hjust = 1)) +
+    geom_text(aes(label = paste0(round(Percentage, 1), "%")), color = "white", hjust = 1.2) 
+```
+
+## Consultations
+
+We work with researchers one-on-one to help them accomplish their research goals. Prior to the pandemic, we provided consultations both online and in-person, depending on the researchers' preferences. We estimate that prior to March 2020, we provided consultations online approximately 10-15% of the time. During the pandemic, we moved our service to online only and restarted in-person consulting in 2023 on a smaller scale as a pilot. Regardless of how users access our service, it has shown growth over time. With the move to the first floor of YRL in 2024, we anticipate more business due to the improved visibility of our location and the addition of more walk-in hours.
+
+```{r consulting, echo=FALSE}
+dsc_consult %>% 
+  filter(!is.na(start_date_time)) %>% 
+  group_by(year = year(start_date_time)) %>% 
+  summarize(consults = sum(n())) %>% 
+  arrange(year) %>%
+  ggplot(aes(year, consults), consults) + geom_col(fill = "#2774AE") + 
+  #ggplot(aes(year, -consults, consults)) + geom_col(fill = "#2774AE") + 
+    coord_flip() + 
+    scale_fill_manual(values=cal_palette("kelp1")) +
+    labs(x= "Year", y="Consults") +
+    theme(axis.text.x = element_text(angle = 45, size = 10, hjust = 1))  +
+    geom_text(aes(label=consults), color = "white", hjust = 1.2)
+```
+
+### Consulting by Department
+
+```{r number-depts-consult, echo=FALSE}
+num_depts <- dsc_consult %>% drop_na(department) %>% distinct(department) %>% nrow()
+num_depts_2023 <- dsc_consult %>% filter(year(start_date_time) == 2023) %>% drop_na(department) %>% distinct(department) %>% nrow()
+```
+
+Since 2019, when we started capturing more user information, our consultations have come from **`r num_depts`** different departments, schools, or centers. We include **The Library** in this number because, as a secondary and sometimes tertiary referral point, we often work with liaising librarians and internal units needing data support. For 2023, we provided data services to **`r num_depts_2023`** campus departments.
+
+Historically, we didn't require patrons to provide departmental information in our appointment scheduler, so the data may be incomplete. While we've normalized departments, schools, and centers as much as possible, some variability remains. Despite this, the data shows that DSC services are interdisciplinary, aligning with our vision to broaden the library's data services.
+
+```{r top_ten_depts, echo=FALSE}
+dsc_consult %>% 
+  select(department) %>% 
+  drop_na() %>% 
+  filter(department != 'DSC') %>% 
+  rename(Departments = department) %>% 
+  count(Departments) %>% 
+  rename(Number = n) %>% 
+  arrange(desc(Number)) %>% 
+  head(15) %>% 
+  ggplot(aes(x=reorder(Departments, -Number), y=Number)) +
+    geom_col(fill = "#2774AE") +
+    coord_flip() +
+    scale_fill_manual(values=cal_palette("kelp1")) +
+    labs(x= "Department", y="Consults", title = "Consulting by Department", subtitle = "FY 2019-2024") +
+    theme(axis.text.x = element_text(angle = 45, size = 10, hjust = 1))  +
+  geom_text(aes(label=Number), color = "white", hjust = 1.2)
+```
+
+### Researcher Status
+
+When provided, we also collect information on our users' status.
+
+```{r consults_status, echo=FALSE}
+# Combine specific categories into standardized names
+dsc_consult <- dsc_consult %>%
+  mutate(ucla_affiliation = case_when(
+    ucla_affiliation %in% c("Graduate", "Graduate Student", "Visiting Graduate Student") ~ "Graduate Student",
+    ucla_affiliation %in% c("Undergrauate 3rd & Undergraduate", "Undergraduate") ~ "Undergraduate",
+    TRUE ~ ucla_affiliation
+  ))
+
+# Plot the data, showing only the top 6 categories
+dsc_consult %>%
+  select(ucla_affiliation) %>%
+  drop_na() %>%
+  count(ucla_affiliation) %>%
+  rename(Number = n) %>%
+  arrange(desc(Number)) %>%
+  top_n(6, Number) %>%  # Show only the top 6 categories
+  ggplot(aes(x = reorder(ucla_affiliation, -Number), y = Number)) +
+  geom_col(fill = "#2774AE") +
+  coord_flip() +
+  labs(x = "Status", y = "Number", title = "Consultations by Status") +
+  theme(axis.text.x = element_text(angle = 45, size = 10, hjust = 1)) +
+  geom_text(aes(label = Number), color = "white", hjust = 1.2, nudge_y = -0.1)
+
+```
+
+## DataSquad Work Overview
+
+The DataSquad team engages in various activities, supporting data services at UCLA. Their work can be categorized into direct interactions with patrons and assigned tasks from DSC staff consultants, often managed through Trello boards.
+
+### Direct Consults with Researchers
+
+```{r echo=FALSE}
+# Summarize direct interactions
+direct_interactions <- dsc_consult %>%
+  filter(group == "Datasquad", !(department %in% "DSC")) %>%
+  group_by(ucla_affiliation) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+# Get total number of consults including NAs
+total_consults <- sum(direct_interactions$count)
+
+```
+
+DataSquad members frequently interact with faculty, staff, and students to provide consultations and support. The total number of consults provided by DataSquad is [`r total_consults`]{style="font-size: 20px; font-weight: bold;"}.
+
+```{r echo=FALSE}
+# Extract year from start_date_time and filter for Datasquad and non-DSC department
+yearly_interactions <- dsc_consult %>%
+  filter(group == "Datasquad", !(department %in% "DSC")) %>%
+  mutate(year = year(ymd_hms(start_date_time))) %>%
+  group_by(year) %>%
+  summarise(total_count = n()) %>%
+  arrange(desc(year))
+
+# Plot for Direct Interactions by Year
+ggplot(yearly_interactions, aes(x = year, y = total_count)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(title = "Total Consults by Year for DataSquad", x = "Year", y = "Number of Consults") +
+  theme_minimal() +
+  coord_flip()
+```
+
+The following chart summarizes the number of consults by patron type for the top 4 categories:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Get top 4 patron types excluding NAs
+top_4_interactions <- direct_interactions %>%
+  filter(!is.na(ucla_affiliation)) %>%
+  top_n(4, count)
+
+# Define the color palette
+#colors <- c("#2774AE", "#FFD700", "#FF4500", "#32CD32")
+
+# Plot for Direct Interactions (Top 4)
+ggplot(top_4_interactions, aes(x = reorder(ucla_affiliation, -count), y = count, fill = ucla_affiliation)) +
+  geom_bar(stat = "identity", fill='steelblue') +
+  #scale_fill_manual(values = colors) +
+  labs(title = "Top 4 Direct Interactions by Status for DataSquad", x = "Patron Type", y = "Number of Consults") +
+  theme_minimal() +
+  coord_flip()
+
+```
+
+### DataSquad Assigned Work via Trello
+
+In addition to direct consultations with researchers, DataSquad handles a significant number of project tasks assigned by the DSC team via our Trello board. These tasks include various research support activities, managed and tracked by DSC staff who act as mentors. The following chart provides an overview of the tasks handled by DataSquad over the past year:
+
+```{r eval=TRUE, include=FALSE}
+# Filter data for the past year and department == "DSC"
+trello_subset_filtered <- trello_subset %>%
+  mutate(start_date_time = ymd_hms(start_date_time)) %>%
+  filter(start_date_time >= today() - years(1), department == "DSC")
+
+# Summarize tasks by month
+monthly_tasks <- trello_subset_filtered %>%
+  mutate(month = floor_date(start_date_time, "month")) %>%
+  group_by(month) %>%
+  summarise(total_tasks = n())
+
+# Ensure the month column is of class Date
+monthly_tasks <- monthly_tasks %>%
+  mutate(month = as.Date(month))
+
+# View the summarized data
+print(monthly_tasks)
+
+```
+
+```{r}
+# Plot for Monthly Tasks
+ggplot(monthly_tasks, aes(x = month, y = total_tasks)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(title = "Tasks Handled by DataSquad Over the Past Year",
+       x = "Month",
+       y = "Number of Tasks") +
+  theme_minimal() +
+  scale_x_date(date_labels = "%b %Y", date_breaks = "1 month") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  coord_flip()
+
+```
+
+```{=html}
+<!-- 
+### DSC Consulting Requests by Topic
+
+When a researcher requests a meeting, we ask for the reason for the appointment so we can be prepared. Below is a graph using text analysis to extract the top terms and bigrams from those reasons. One interesting aspect this illustrates is the prominence of tools and software needed to accomplish research tasks, highlighting the importance of software in data-intensive research.
+-->
+```
+```{r echo=FALSE, eval=FALSE}
+# Source the text analysis script
+source("src/text_analysis.R")
+
+# Load the combined tokens
+combined_tokens <- readRDS("data/combined_tokens.rds")
+
+# View the first few rows
+#head(combined_tokens)
+```
+
+```{r consult_topics, echo=FALSE, eval=FALSE}
+remove_bigrams <- c("data", "project", "analysis", "geospatial", "geospatial data",
+                    "data gis", "wrangling", "cleaning", "discuss", "meeting", 
+                    "research", "https", "time", "create", "files", "google", 
+                    "data data", "collection", "cleaning data", "planning", 
+                    "management", "set", "forward", "sharing", "tool", "file", 
+                    "analysis coding", "management planning", "twitter", "access", 
+                    "statistical", "hoping", "manipulation", "consulting", "smartcard", "smartcard inline", "inline", "https docs", "library", "drive", "docs google", "datasquad", "docs")
+# Remove specific words, e.g., "data"
+filtered_tokens <- combined_tokens %>%
+  filter(!bigram %in%  remove_bigrams)
+
+# Combine "programming", "coding", and "coding programming" into "coding/programming"
+filtered_tokens <- filtered_tokens %>%
+  mutate(bigram = if_else(bigram %in% c("programming",
+                                        "coding", "coding programming", "code"), 
+                          "coding/programming", bigram))
+
+# Count the frequency of each bigram
+bigram_counts <- filtered_tokens %>%
+  count(bigram, sort = TRUE)
+
+# View the top bigrams
+#head(bigram_counts, 20)
+
+# Pick top 15
+top_bigrams <- bigram_counts %>%
+  top_n(15, n) %>%
+  arrange(desc(n)) %>%
+  mutate(bigram = tools::toTitleCase(bigram))
+
+# Visualize the top bigrams with similar styling to the first chart
+ggplot(top_bigrams, aes(x = reorder(bigram, n), y = n)) +
+  geom_col(fill = "#2774AE") +
+  coord_flip() +
+  labs(title = "Top 15 Topics in Consulting Requests",
+       x = "Topics",
+       y = "Frequency") +
+  theme(axis.text.x = element_text(angle = 45, size = 10, hjust = 1)) +
+  geom_text(aes(label = n), color = "white", hjust = 1.2)
+```
+
+## Data Repositories & Infrastructure
+
+### UCLA Dataverse
+
+Datasets in UCLA Dataverse are collections of files and this is a view of the growth of those collections since we started Dataverse in 2019. The big jump in 2020 is the addition of metadata from the existing Social Science Data Archive collection we had already curated previously in Dataverse.
+
+```{r dataverse-datasets-published, echo=FALSE}
+# Custom theme
+custom_theme <- theme_minimal() +
+  theme(
+    text = element_text(family = "Arial", color = "#333333"),
+    axis.title = element_text(size = 14, face = "bold"),
+    axis.text = element_text(size = 12),
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14, hjust = 0.5),
+    plot.caption = element_text(size = 10, face = "italic", hjust = 1),
+    panel.grid.major = element_line(color = "#D3D3D3"),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "#FFFFFF", color = NA),
+    plot.background = element_rect(fill = "#FFFFFF", color = NA)
+  )
+
+# Create the plot
+ggplot(dataverse, aes(x = ym(date), y = datasets_published)) +
+  geom_line(color = "#2774AE", size = 1.5) +
+  #geom_point(color = "#2774AE", size = 3) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  labs(
+    title = "Datasets Published Over Time",
+    subtitle = "Monthly Data Publication Trends",
+    x = "Year",
+    y = "Number of Datasets Published",
+    caption = "Source: UCLA Data Science Center"
+  ) + custom_theme
+```
+
+File growth in Dataverse is another metric to consider when assessing the usage of UCLA Dataverse as a resource on campus. Each file in Dataverse is addressable by a unique DOI.
+
+```{r dataverse-files-published, echo=FALSE}
+# Custom theme
+custom_theme <- theme_minimal() +
+  theme(
+    text = element_text(family = "Arial", color = "#333333"),
+    axis.title = element_text(size = 14, face = "bold"),
+    axis.text = element_text(size = 12),
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14, hjust = 0.5),
+    plot.caption = element_text(size = 10, face = "italic", hjust = 1),
+    panel.grid.major = element_line(color = "#D3D3D3"),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "#FFFFFF", color = NA),
+    plot.background = element_rect(fill = "#FFFFFF", color = NA)
+  )
+
+# Create the plot
+ggplot(dataverse, aes(x = ym(date), y = files_published)) +
+  geom_line(color = "#2774AE", size = 1.5) +
+  #geom_point(color = "#2774AE", size = 3) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  labs(
+    title = "Files Published Over Time",
+    subtitle = "Monthly File Publication Trends",
+    x = "Year",
+    y = "Number of Files Published",
+    caption = "Source: UCLA Data Science Center"
+  ) +
+  custom_theme
+```
+
+### Geospatial Services
